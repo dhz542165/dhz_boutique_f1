@@ -1,4 +1,4 @@
-# Menu intéraction en RageUI
+# Boutique IG en RageUI
 Pour le start ensure dhz_boutique dans le server cfg et ne pas oublier le sql
 
 # Config simple
