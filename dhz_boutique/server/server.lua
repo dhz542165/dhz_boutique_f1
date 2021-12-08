@@ -24,8 +24,8 @@ ESX.RegisterServerCallback('dhz_boutique:BuyItem', function(source, cb, item)
     for k, v in pairs(Config.Vehicle) do
         if item == v.data.NameVehicle then
             MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = '".. xPlayer.identifier .."'", {}, function (result)
-                if result[1].pointboutique >= tonumber(Config.Vehicle.Point) then
-                    local newpoint = result[1].pointboutique - tonumber(Config.Vehicle.Point)
+                if result[1].pointboutique >= tonumber(v.data.Point) then
+                    local newpoint = result[1].pointboutique - tonumber(v.data.Point)
                     MySQL.Async.execute("UPDATE `users` SET `pointboutique`= '".. newpoint .."' WHERE `identifier` = '".. xPlayer.identifier .."'", {}, function() end)
                     MySQL.Async.execute('INSERT INTO boutique_historique (identifier,achat,prix) VALUES (@identifier,@achat,@prix)', 
                         { 
@@ -47,8 +47,8 @@ ESX.RegisterServerCallback('dhz_boutique:BuyItem', function(source, cb, item)
     for k, v in pairs(Config.Armes) do
         if item == v.data.Preview then
             MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = '".. xPlayer.identifier .."'", {}, function (result)
-                if result[1].pointboutique >= tonumber(Config.Armes.Point) then
-                    local newpoint = result[1].pointboutique - tonumber(Config.Armes.Point)
+                if result[1].pointboutique >= tonumber(v.data.Point) then
+                    local newpoint = result[1].pointboutique - tonumber(v.data.Point)
                     MySQL.Async.execute("UPDATE `users` SET `pointboutique`= '".. newpoint .."' WHERE `identifier` = '".. xPlayer.identifier .."'", {}, function() end)
                     MySQL.Async.execute('INSERT INTO boutique_historique (identifier,achat,prix) VALUES (@identifier,@achat,@prix)', 
                         { 
@@ -71,8 +71,8 @@ ESX.RegisterServerCallback('dhz_boutique:BuyItem', function(source, cb, item)
     for k, v in pairs(Config.Argent) do
         if item == v.data.Somme then
             MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = '".. xPlayer.identifier .."'", {}, function (result)
-                if result[1].pointboutique >= tonumber(Config.Argent.Point) then
-                    local newpoint = result[1].pointboutique - tonumber(Config.Argent.Point)
+                if result[1].pointboutique >= tonumber(v.data.Point) then
+                    local newpoint = result[1].pointboutique - tonumber(v.data.Point)
                     MySQL.Async.execute("UPDATE `users` SET `pointboutique`= '".. newpoint .."' WHERE `identifier` = '".. xPlayer.identifier .."'", {}, function() end)
                     MySQL.Async.execute('INSERT INTO boutique_historique (identifier,achat,prix) VALUES (@identifier,@achat,@prix)', 
                         { 
